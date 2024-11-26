@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Result from 'postcss/lib/result';
 
 const Register = () => {
 
+  const navigate = useNavigate()
     //  Email Authentication er function jeta amra AuthProvider e use koreci seta access kori
 
     const {createUser } = useContext (AuthContext);
@@ -25,6 +26,9 @@ const Register = () => {
             .then(result =>{
 
               console.log(result.user)
+
+              e.target.reset()
+              navigate('/login')
             })
 
             .catch(error =>{
